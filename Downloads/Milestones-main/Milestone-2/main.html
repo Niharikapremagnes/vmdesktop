@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Registration Form</title>
+</head>
+<body>
+    <div class="background">
+        <span class="text1">Register</span>
+        <span class="text2">Now</span>
+    </div>
+    <h1>Student Registration Form</h1>
+    <form action="https://techademy.in/mindtreedigitalpracticum/account/landing" autocomplete="off" onsubmit="return valid()">
+        <table>
+            <tr><td><input type="text" id="name" placeholder="Name" required>
+            <br><span id="name_err"></span>
+            </td></tr>
+            <tr><td><input type="text" id="age" placeholder="Age" required>
+            <br><span id="age_err"></span>
+            </td></tr>
+
+            <tr>
+            <td>
+            <label class="gender-text" for="gender" >Select Gender : </label>
+            <input  type="radio" id="gender" value="Male"/>Male
+            <input  type="radio" id="gender" value="Female"/>Female
+            <br>
+            <span id="gender-err"></span>
+            </td></tr>
+            <tr><td> 
+                <label class="gender-text" for="gender">Subjects : </label>
+                Computer Science : <input type="checkbox" name="subjects"  id="subjects" value="draw"/>
+                Physics : <input type="checkbox" name="subjects" id="subjects" value="play"/ required>
+                Chemistry : <input type="checkbox" name="subjects" id="subjects" value="swim"/ required>
+                Mathematics : <input type="checkbox" name="subjects" id="subjects" value="travel"/ required>
+                English : <input type="checkbox" name="subjects" id="subjects" value="travel"/>
+                <br><span id="subjects_err"></span>
+            </td></tr>
+
+
+            <tr><td><input type="password" id="create" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Password" required>
+                <br><span id="create_err"></span>
+            </td></tr>
+            <tr><td><input type="reset" id="reset-btn" placeholder="Reset"></td></tr>
+            <tr><td><input type="submit" id="submit-btn" placeholder="Submit"></td></tr>
+        </table>
+    </form>
+    <script src="myscript.js"></script>
+
+</body>
+</html>

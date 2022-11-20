@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+*{
+    font-family: 'poppins', sans-serif;
+    list-style: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+body{
+    background-color: #111;
+
+    height: 10%;
+    color: white;
+}
+
+.background{
+    background: yellowgreen;
+    color: black;
+    font-size: 45px;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    
+
+}
+
+.text1{
+    font-size: 50px;
+    font-weight: 800;
+    letter-spacing: 8px;
+    margin-bottom: 20px;
+    position: relative;
+    animation: text 3s 1;
+    color: black;
+}
+.text2{
+    font-size: 30px;
+    color: white;
+    font-weight: 600;
+}
+@keyframes text{
+    0%{
+        color: black;
+        margin-bottom: -40px;
+    }
+    30%{
+        letter-spacing: 25px;
+        margin-bottom: -40px;
+    }
+    85%{
+        letter-spacing: 8px;
+        margin-bottom: -40px;
+    }
+}
+
+
+
+h1{
+    color: white;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 35px;
+    margin-top: 3%;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+
+}
+
+::placeholder{
+    color: #000;
+    font-weight: 300px;
+}
+
+
+input{
+    width: 600px;
+    height: 45px;
+    border-radius: 10px;
+    border: none;
+    background: yellowgreen;
+    padding: 12px;
+    font-size: 18px;
+    color: #000;
+    margin-top: 15px;
+    
+}
+
+#gender {
+  accent-color: yellowgreen;
+    width: 0.9em; 
+    height: 0.9em;
+    margin-right: 10px;
+   
+}
+
+#subjects{
+    accent-color: yellowgreen;
+    width: 0.9em; 
+    height: 0.9em;
+    margin-right: 10px;
+}
+
+.gender-text{
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: white;
+    margin-right: 20px;
+}
+
+
+.radio{
+    font-size: 24px;
+    font-weight: 500;
+    text-transform: capitalize;
+    display: inline-block;
+    vertical-align: middle;
+    color: white;
+    position: relative;
+    padding-left: 30px;
+    
+}
+input[type=radio] {
+    margin-left: 10px;
+}
+
+select{
+    width: 600px;
+    height: 45px;
+    border-radius: 10px;
+    border: none;
+    background: yellowgreen;
+    padding: 12px;
+    font-size: 20px;
+    color: #000;
+    margin-top: 15px;
+    
+}
+
+option{
+    background: white;
+}
+
+
+span{
+    color: red;
+    font-size: 16px;
+}
+
+
+/*   BUTTON   */
+
+
+#submit-btn{
+    padding: 7px 10px;
+    float: right;
+    font-size: 16px;
+    height: 50px;
+    background: none;
+    color: white;
+    border: 2px solid white;
+    width: 100px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 15px;
+    
+    align-items: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+
+}
+
+#submit-btn:hover{
+    background: yellowgreen;
+    transition: all 0.3s ease;
+    color: #000;
+    border: 2px solid #000;
+}
+
+#reset-btn{
+    padding: 7px 10px;
+    float: left;
+    font-size: 16px;
+    height: 50px;
+    background: none;
+    color: white;
+    border: 2px solid white;
+    width: 100px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 15px;
+    margin-top: 35px;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+#reset-btn:hover{
+    background: yellowgreen;
+    transition: all 0.3s ease;
+    color: #000;
+    border: 2px solid #000;
+}
+
+
+@media screen and (max-width: 642px) {
+
+    input{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        font-size: 14px;
+
+    }
+    select{
+        width: 100%;
+        font-size: 14px;
+    }
+
+    h1{
+        font-size: 25px;
+    }
+
+    .text1{
+        font-size: 38px;
+
+    }
+    .text2{
+        font-size: 22px;
+    }
+    
+#submit-btn{
+   
+    font-size: 14px;
+    height: 40px;
+    width: 80px;
+    letter-spacing: 1px;
+    
+
+}
+
+#reset-btn{
+   
+    font-size: 14px;
+    height: 40px;
+    width: 80px;
+    letter-spacing: 1px;
+    
+
+}
+    
+}

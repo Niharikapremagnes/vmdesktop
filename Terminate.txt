@@ -1,0 +1,186 @@
+netstat -aon|find /i "listening"
+netstat -aon|find /i "listening" |find "8080"
+taskkill/F /PID 8080
+
+
+
+server.port=8001
+eureka.client.serviceUrl.defaultZone = http://localhost:8761/eureka/
+spring.application.name = DEPARTMENT-SERVICE 
+
+
+cloud:
+    gateway:
+      routes:
+        - id: EMPLOYEE-SERVICE
+          uri: lb://EMPLOYEE-SERVICE
+          predicates:
+            - Path=/emps/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: EMPLOYEE-SERVICE
+                fallbackuri: forward:/userServiceFallBack
+        - id: DEPARTMENT-SERVICE
+          uri: lb://DEPARTMENT-SERVICE
+          predicates:
+            - Path=/departments/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: DEPARTMENT-SERVICE
+                fallbackuri: forward:/departmentServiceFallBack
+
+
+hystrix:
+  command:
+    fallbackcmd:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 4000
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+
+
+
+
+
+
+
+<div class="col-md-6 offset-md-3">
+    <form name="myForm" novalidate>
+        <h4>Tourist Details</h4>
+        <div class="form-group">
+            <label for="id"> Id</label>
+            <input required minlength="1" maxlength="4" type="number" class ="form-control" id = "id"
+                [(ngModel)] = "tourist.id" name = "id">
+        </div>
+    
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" class ="form-control" id = "firstname" pattern="[a-zA-Z{1,15}]" 
+                [(ngModel)] = "tourist.firstname" name = "firstname" required>
+        </div>
+
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" class ="form-control" id = "lastname" pattern="[a-zA-Z{1,12}]" 
+                [(ngModel)] = "tourist.lastname" name = "lastname">
+        </div>
+
+        <div class="form-check">
+            <label>Gender</label><br/>
+            <input type="radio" class ="form-check-input" id = "validationFormCheck2"
+                [(ngModel)] = "tourist.gender" name = "gender" value="male" required>
+                <label class="form-check-label" for="validationFormCheck2">Male</label>
+            <br>
+            <input type="radio" class ="form-check-input" id = "validationFormCheck3"
+            [(ngModel)] = "tourist.gender" name = "gender" value="female" required>
+            <label class="form-check-label" for="validationFormCheck3">Female</label>
+        </div>
+    
+        <div class="form-group">
+            <label> Age</label>
+            <input type="number" class ="form-control" id = "age"
+                [(ngModel)] = "tourist.age" name = "age">
+        </div>
+        <div class="form-group">
+            <label> From Place</label>
+            <input type="text" class ="form-control" id = "fromplace"
+                [(ngModel)] = "tourist.fromplace" name = "fromplace">
+        </div>
+        <div class="form-group">
+            <label>Num of Days</label>
+            <input type="number" class ="form-control" id = "numofdays"
+                [(ngModel)] = "tourist.firstname" name = "numofdays">
+        </div>
+    
+        <button class = "btn btn-success" type ="submit">Submit</button>
+    </form>
+    <br/>
+    </div> 
+
+
+
+
+
+<form class="border border-dark">
+    <div class="row g-0">
+        <div class="col text-center p-2 mb-3 bg-light">
+            <span class="fs-3">Register Tourist Details</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="id" class="form-label">ID</label>
+            <input type="number" class="form-control" id="id">
+        </div>
+    </div>
+        <div class="row">
+            <div class="col">
+                <label for="firstname" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="firstname">
+            </div>
+            <div class="col">
+                <label for="lastname" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="Lastname">
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class="col p-120 mb-24">
+                <label>Gender</label><br/>
+                
+                <input type="radio" class ="form-check-input" id = "validationFormCheck2"
+                    [(ngModel)] = "tourist.gender" name = "gender" value="male" required>
+                    <label class="form-check-label" for="validationFormCheck2">Male</label>
+                <br>
+                <input type="radio" class ="form-check-input" id = "validationFormCheck3"
+                [(ngModel)] = "tourist.gender" name = "gender" value="female" required>
+                <label class="form-check-label" for="validationFormCheck3">Female</label>
+            
+            </div>
+        </div>
+        
+
+</form>
+
+
+get Id():FormControl{
+    return this.registerForm.get("id") as FormControl;
+  }
+  get FirstName():FormControl{
+    return this.registerForm.get("firstname") as FormControl;
+  }
+  get LastName():FormControl{
+    return this.registerForm.get("lastname") as FormControl;
+  }
+  get Age():FormControl{
+    return this.registerForm.get("age") as FormControl;
+  }
+  get Gender():FormControl{
+    return this.registerForm.get("gender") as FormControl;
+  }
+  get FromPlace():FormControl{
+    return this.registerForm.get("fromplace") as FormControl;
+  }
+  get NumOfDays():FormControl{
+    return this.registerForm.get("numofdays") as FormControl;
+  }
+
+
+ registerForm=new FormGroup({
+    id:new FormControl("",[Validators.required,Validators.maxLength(4)]),
+    firstname:new FormControl("",[Validators.required,Validators.maxLength(15)]), //Validators.pattern('[a-zA-Z].*)]')
+    lastname:new FormControl("",[Validators.required,Validators.maxLength(12)]), //Validators.pattern('[a-zA-Z].*)]')
+    age:new FormControl("",[Validators.required]),
+    gender:new FormControl("",[Validators.required]),
+    fromplace:new FormControl("",[Validators.required]), //Validators.pattern('[a-zA-Z].*)]')
+    numofdays:new FormControl("",[Validators.required])
+  })
+
